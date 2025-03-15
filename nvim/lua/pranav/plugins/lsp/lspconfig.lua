@@ -91,8 +91,8 @@ return {
 					root_dir = lspconfig.util.root_pattern("angular.json", "project.json"),
 				})
 			end,
-			["tsserver"] = function()
-				lspconfig.tsserver.setup({
+			["ts_ls"] = function()
+				lspconfig.ts_ls.setup({
 					capabilities = capabilities,
 					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "typescript.tsx" },
 					root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
