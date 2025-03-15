@@ -25,6 +25,20 @@ echo_info() {
     echo "[INFO] $1"
 }
 
+# --- Step 1: Update System and Install Git ---
+echo_info "Updating package lists and installing Git..."
+sudo apt update
+if ! command -v git >/dev/null 2>&1; then
+    sudo apt install -y git
+    if [ $? -eq 0 ]; then
+        echo_info "Git installed successfully: $(git --version)"
+    else
+        echo_info "Failed to install Git. Exiting."
+        exit 1
+    fi
+else
+    echo_info "Git is already installed: $(git --version)"
+fi
 # --- Step 1: Backup Existing Files ---
 # Before we change anything, let’s back up your current SSH config file (if it exists)
 # if [ -f "$SSH_CONFIG" ]; then
